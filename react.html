@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Price Card Example</title>
+  <style>
+    .blue-card {
+      background: blue;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 200px;
+      margin: 16px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .features {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1> Price Card </h1>
+
+<div class="blue-card">
+  <div class="card">
+    <h2>FREE</h2>
+    <p class="price">$19.99/month</p>
+    <ul class="features">
+      <li>Feature 1</li>
+      <li>Feature 2</li>
+      <li>Feature 3</li>
+    </ul>
+    <button class="button">Subscribe</button>
+  </div>
+
+  <div class="card">
+    <h2>PLUS</h2>
+    <p class="price">$39.99/month</p>
+    <ul class="features">
+      <li>Feature A</li>
+      <li>Feature B</li>
+      <li>Feature C</li>
+    </ul>
+    <button class="button">Subscribe</button>
+  </div>
+
+  <div class="card">
+    <h2>PRO</h2>
+    <p class="price">$59.99/month</p>
+    <ul class="features">
+      <li>Premium Feature 1</li>
+      <li>Premium Feature 2</li>
+      <li>Premium Feature 3</li>
+    </ul>
+    <button class="button">Subscribe</button>
+  </div>
+</div>
+
+</body>
+</html>
