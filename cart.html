@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      justify-content: center;
+    }
+
+    #cart {
+      width: 300px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .cart-item p {
+      margin: 0;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 0 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #total-quantity,
+    #total-amount {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cart">
+    <div class="cart-item" data-id="1">
+      <p>iPhone 9</p>
+      <p>description": "An apple mobile which is nothing like apple</p>
+      <p>price": $549 </p> 
+      <img src="https://i.dummyjson.com/data/products/1/thumbnail.jpg" alt="Item 1 Image" style="width: 250px; height: 150px;">
+      <p>
+        Quantity: 
+        <button onclick="decrementQuantity(1)">-</button>
+        <span id="quantity-1">0</span>
+        <button onclick="incrementQuantity(1)">+</button>
+      </p>
+    </div>
+    <div class="cart-item" data-id="2">
+      <p>iPhone X</p>
+      <p>Price: $899</p>
+      <p>description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...</p>
+      <img src="https://i.dummyjson.com/data/products/2/thumbnail.jpg" alt="Item 1 Image" style="width: 250px; height: 150px;">
+
+      <p>
+        Quantity: 
+        <button onclick="decrementQuantity(2)">-</button>
+        <span id="quantity-2">0</span>
+        <button onclick="incrementQuantity(2)">+</button>
+      </p>
+    </div>
+    <div class="cart-item" data-id="3">
+      <p>Samsung Universe 9</p>
+      <p>Price: $1249</p>
+      <p>description": "Samsung's new variant which goes beyond Galaxy to the Universe</p>
+      <img src="https://i.dummyjson.com/data/products/3/thumbnail.jpg" alt="Item 1 Image" style="width: 250px; height: 150px;">
+      <p>
+        Quantity: 
+        <button onclick="decrementQuantity(3)">-</button>
+        <span id="quantity-3">0</span>
+        <button onclick="incrementQuantity(3)">+</button>
+      </p>
+    </div>
+    <div>
+      <p>Total Quantity: <span id="total-quantity">3</span></p>
+      <p>Total Amount: $<span id="total-amount">60</span></p>
+    </div>
+  </div>
+
+  <script>
+    function incrementQuantity(itemId) {
+      const quantityElement = document.getElementById(`quantity-${itemId}`);
+      quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
+      updateTotals();
+    }
+
+    function decrementQuantity(itemId) {
+      const quantityElement = document.getElementById(`quantity-${itemId}`);
+      const currentQuantity = parseInt(quantityElement.innerText);
+      if (currentQuantity > 1) {
+        quantityElement.innerText = currentQuantity - 1;
+        updateTotals();
+      }
+    }
+
+    function updateTotals() {
+      const totalQuantityElement = document.getElementById('total-quantity');
+      const totalAmountElement = document.getElementById('total-amount');
+
+      let totalQuantity = 0;
+      let totalAmount = 0;
+
+      document.querySelectorAll('.cart-item').forEach(item => {
+        const itemId = item.getAttribute('data-id');
+        const quantity = parseInt(document.getElementById(`quantity-${itemId}`).innerText);
+        const price = parseInt(item.querySelector('p:nth-child(2)').innerText.split('$')[1]);
+
+        totalQuantity += quantity;
+        totalAmount += price * quantity;
+      });
+
+      totalQuantityElement.innerText = totalQuantity;
+      totalAmountElement.innerText = totalAmount;
+    }
+  </script>
+
+</body>
+</html>
